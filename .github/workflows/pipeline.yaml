@@ -1,6 +1,6 @@
 on: # defines trigger event
   push:
-    branch: [ main ]
+    branches: [ main ]
 
 jobs: # group of steps that run together
   build:
@@ -16,10 +16,12 @@ jobs: # group of steps that run together
       - name: Set Up Node
         uses: actions/setup-node@v5 # Using v 20 - v 24
         with: 
-            node-version: 20 # I am using V 20
-      # 2 run Npm install
+          node-version: 20 # I am using V 20
+      
+      # 3 run Npm install
       - name: Install dependences
         run: npm install
 
-      -name : Run Tests
-       run: npm test
+      # 4 Run Tests
+      - name : Run Tests
+        run: npm test
