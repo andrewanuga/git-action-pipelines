@@ -1,0 +1,25 @@
+on: # defines trigger event
+  push:
+    branch: [ main ]
+
+jobs: # group of steps that run together
+  build:
+    runs-on:  ubuntu-latest
+
+
+    steps:
+      # 1. This step downloads your code onto the Ubuntu runner
+      - name: Checkout code
+        uses: actions/checkout@v5 # v5 uses node 20
+
+      # 2 To be able to Specify the Node version
+      - name: Set Up Node
+        uses: actions/setup-node@v5 # Using v 20 - v 24
+        with: 
+            node-version: 20 # I am using V 20
+      # 2 run Npm install
+      - name: Install dependences
+        run: npm install
+
+      -name : Run Tests
+       run: npm test
